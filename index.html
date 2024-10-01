@@ -11,24 +11,57 @@
         <h1>Welcome to TJ Maxx E-commerce!</h1>
         <nav>
             <ul>
+                <li><a href="#login">Login</a></li>
                 <li><a href="#products">Products</a></li>
                 <li><a href="#cart">Shopping Cart</a></li>
+                <li><a href="#search">Search Products</a></li>
             </ul>
         </nav>
     </header>
-    
+
+    <!-- Login Section -->
+    <section id="login">
+        <h2>Login</h2>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <div id="login-error" class="error-message"></div>
+        </form>
+        <a href="#" id="forgot-password">Forgot Password?</a>
+    </section>
+
+    <!-- Product Section -->
     <section id="products">
         <h2>Products</h2>
-        <div class="product-list">
-            <!-- Product items will be displayed here -->
-        </div>
+        <div class="product-list"></div>
     </section>
-    
+
+    <!-- Shopping Cart Section -->
     <section id="cart">
         <h2>Shopping Cart</h2>
-        <div class="cart-items">
-            <!-- Shopping cart items will be displayed here -->
-        </div>
+        <div class="cart-items"></div>
+        <button id="checkout">Proceed to Checkout</button>
+    </section>
+
+    <!-- Product Search Section -->
+    <section id="search">
+        <h2>Search Products</h2>
+        <input type="text" id="search-input" placeholder="Search for products...">
+        <button id="search-button">Search</button>
+        <div id="search-results" class="product-list"></div>
+    </section>
+
+    <!-- Payment Section -->
+    <section id="payment" style="display:none;">
+        <h2>Payment</h2>
+        <form id="payment-form">
+            <input type="text" id="card-number" placeholder="Card Number" required>
+            <input type="text" id="expiry-date" placeholder="MM/YY" required>
+            <input type="text" id="cvv" placeholder="CVV" required>
+            <button type="submit">Pay Now</button>
+            <div id="payment-error" class="error-message"></div>
+        </form>
     </section>
 
     <script src="scripts/main.js"></script>
