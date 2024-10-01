@@ -1,69 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
-    <title>TJ Maxx E-commerce Platform</title>
-</head>
-<body>
-    <header>
-        <h1>Welcome to TJ Maxx E-commerce!</h1>
-        <nav>
-            <ul>
-                <li><a href="#login">Login</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#cart">Shopping Cart</a></li>
-                <li><a href="#search">Search Products</a></li>
-            </ul>
-        </nav>
-    </header>
+// Initialize the shopping cart
+let cart = [];
 
-    <!-- Login Section -->
-    <section id="login">
-        <h2>Login</h2>
-        <form id="login-form">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-            <div id="login-error" class="error-message"></div>
-        </form>
-        <a href="#" id="forgot-password">Forgot Password?</a>
-    </section>
+// Function to add item to cart
+function addToCart(productId, quantity) {
+    const product = products.find(p => p.id === productId);
 
-    <!-- Product Section -->
-    <section id="products">
-        <h2>Products</h2>
-        <div class="product-list"></div>
-    </section>
+    // Check if user is logged in
+    if (!isLoggedIn()) {
+        alert('Please log in to add items to your cart.');
+        return;
+    }
 
-    <!-- Shopping Cart Section -->
-    <section id="cart">
-        <h2>Shopping Cart</h2>
-        <div class="cart-items"></div>
-        <button id="checkout">Proceed to Checkout</button>
-    </section>
+    // Check stock availability
+    if (product.stock === 0) {
+        alert('This item is out of stock.');
+        return;
+    }
 
-    <!-- Product Search Section -->
-    <section id="search">
-        <h2>Search Products</h2>
-        <input type="text" id="search-input" placeholder="Search for products...">
-        <button id="search-button">Search</button>
-        <div id="search-results" class="product-list"></div>
-    </section>
+    // Validate quantity
+    if (quantity <= 0) {
+        alert('Quantity must be a positive number.');
+        return;
+    }
 
-    <!-- Payment Section -->
-    <section id="payment" style="display:none;">
-        <h2>Payment</h2>
-        <form id="payment-form">
-            <input type="text" id="card-number" placeholder="Card Number" required>
-            <input type="text" id="expiry-date" placeholder="MM/YY" required>
-            <input type="text" id="cvv" placeholder="CVV" required>
-            <button type="submit">Pay Now</button>
-            <div id="payment-error" class="error-message"></div>
-        </form>
-    </section>
+    // Add or update the item in the cart
+    const cartItem = cart.find(item => item.id === productId);
+    if (cartItem) {
+        cartItem.quantity += quantity;
+    } else {
+        cart.push({ ...product, quantity });
+    }
 
-    <script src="scripts/main.js"></script>
-</body>
-</html>
+    // Update stock
+    product.stock -= quantity;
+    alert('Item added to cart!');
+}
+
+// Function to remove item from cart
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    alert('Item removed from cart!');
+}
+
+// Function to modify item quantity in the cart
+function modifyItemQuantity(productId, newQuantity) {
+    const cartItem = cart.find(item => item.id === productId);
+
+    // Check for negative quantity
+    if (newQuantity < 0) {
+        alert('Quantity must be a positive number.');
+        return;
+    }
+
+    if (cartItem) {
+        // Update quantity
+        const difference = newQuantity - cartItem.quantity;
+        const product = products.find(p => p.id === productId);
+        
+        // Check stock availability
+        if (difference > product.stock) {
+            alert('Not enough stock available to fulfill this request.');
+            return;
+        }
+
+        // Update the quantity and stock
+        cartItem.quantity = newQuantity;
+        product.stock -= difference;
+        alert('Quantity updated!');
+    }
+}
+
+// Function to check if user is logged in
+function isLoggedIn() {
+    // Placeholder for actual login check logic
+    return true; // Change this based on your login implementation
+}
