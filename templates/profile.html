@@ -1,1 +1,21 @@
-
+<!-- templates/profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Profile - TJMaxx Online Store</title>
+</head>
+<body>
+    <header>
+        <h1>Your Profile</h1>
+    </header>
+    <form onsubmit="updateProfile(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" value="John Doe" required><br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" value="123 Main St" required><br>
+        <button type="submit">Update Profile</button>
+    </form>
+    <script src="../js/main.js"></script>
+</body>
+</html>
