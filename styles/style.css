@@ -1,14 +1,16 @@
+/* styles.css */
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    background-color: #f8f8f8;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
+    background-color: #0072c6;
+    color: white;
+    padding: 20px;
     text-align: center;
 }
 
@@ -19,25 +21,42 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin: 0 15px;
+    margin: 0 10px;
 }
 
-nav ul li a {
-    color: #fff;
+nav a {
+    color: white;
     text-decoration: none;
 }
 
-section {
-    margin: 20px;
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
 }
 
-.product-list, .cart-items, .error-message {
+.product {
+    background-color: white;
     border: 1px solid #ccc;
-    padding: 15px;
-    background-color: #fff;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
 }
 
-.error-message {
-    color: red;
-    margin-top: 10px;
+.product img {
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #0072c6;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
