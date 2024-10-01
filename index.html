@@ -1,77 +1,47 @@
-// Initialize the shopping cart
-let cart = [];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>TJ Maxx Online Store</title>
+</head>
+<body>
+    <header>
+        <h1>TJ Maxx Online Store</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Featured Products</h2>
+        <div class="product-container">
+            <!-- Example products -->
+            <div class="product">
+                <img src="images/sweater.jpg" alt="Cozy Sweater">
+                <h3>Cozy Sweater</h3>
+                <p>Price: $29.99</p>
+                <p>In Stock: 20</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/shoes.jpg" alt="Running Shoes">
+                <h3>Running Shoes</h3>
+                <p>Price: $49.99</p>
+                <p>In Stock: 20</p>
+                <button>Add to Cart</button>
+            </div>
+            <!-- Add 18 more product divs in the same format -->
+        </div>
+    </main>
 
-// Function to add item to cart
-function addToCart(productId, quantity) {
-    const product = products.find(p => p.id === productId);
-
-    // Check if user is logged in
-    if (!isLoggedIn()) {
-        alert('Please log in to add items to your cart.');
-        return;
-    }
-
-    // Check stock availability
-    if (product.stock === 0) {
-        alert('This item is out of stock.');
-        return;
-    }
-
-    // Validate quantity
-    if (quantity <= 0) {
-        alert('Quantity must be a positive number.');
-        return;
-    }
-
-    // Add or update the item in the cart
-    const cartItem = cart.find(item => item.id === productId);
-    if (cartItem) {
-        cartItem.quantity += quantity;
-    } else {
-        cart.push({ ...product, quantity });
-    }
-
-    // Update stock
-    product.stock -= quantity;
-    alert('Item added to cart!');
-}
-
-// Function to remove item from cart
-function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
-    alert('Item removed from cart!');
-}
-
-// Function to modify item quantity in the cart
-function modifyItemQuantity(productId, newQuantity) {
-    const cartItem = cart.find(item => item.id === productId);
-
-    // Check for negative quantity
-    if (newQuantity < 0) {
-        alert('Quantity must be a positive number.');
-        return;
-    }
-
-    if (cartItem) {
-        // Update quantity
-        const difference = newQuantity - cartItem.quantity;
-        const product = products.find(p => p.id === productId);
-        
-        // Check stock availability
-        if (difference > product.stock) {
-            alert('Not enough stock available to fulfill this request.');
-            return;
-        }
-
-        // Update the quantity and stock
-        cartItem.quantity = newQuantity;
-        product.stock -= difference;
-        alert('Quantity updated!');
-    }
-}
-
-// Function to check if user is logged in
-function isLoggedIn() {
-    // Placeholder for actual login check logic
-    return true; // Change this based on your login implementation
-}
+    <footer>
+        <p>&copy; 2024 TJ Maxx Online Store. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
