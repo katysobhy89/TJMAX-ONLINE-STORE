@@ -1,1 +1,24 @@
-
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>TJMaxx Online Store - Home</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to TJMaxx Online Store</h1>
+    </header>
+    <div class="product-list">
+        <div class="product">
+            <img src="../images/product1.jpg" alt="Product 1">
+            <h2>Product Name 1</h2>
+            <p>Price: $19.99</p>
+            <button onclick="addToCart(1)">Add to Cart</button>
+            <button onclick="addToWishlist(1)">Add to Wishlist</button>
+        </div>
+        <!-- Repeat similar blocks for other products -->
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+</html>
