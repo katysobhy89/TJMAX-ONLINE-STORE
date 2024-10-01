@@ -27,12 +27,17 @@ nav ul li a {
     text-decoration: none;
 }
 
-#products, #cart {
+section {
     margin: 20px;
 }
 
-.product-list, .cart-items {
+.product-list, .cart-items, .error-message {
     border: 1px solid #ccc;
     padding: 15px;
     background-color: #fff;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
 }
